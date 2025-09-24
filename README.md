@@ -35,6 +35,7 @@ The agent operates in a continuous loop, orchestrating a conversation that is en
 
 - Python 3.7+
 - An OpenAI API Key
+- A Sendgrid API Key
 
 ## Setup
 
