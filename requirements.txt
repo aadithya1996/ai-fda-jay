@@ -1,0 +1,8 @@
+openai
+sounddevice
+soundfile
+numpy
+python-dotenv
+thefuzz
+python-Levenshtein
+pandas

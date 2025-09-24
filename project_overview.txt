@@ -1,0 +1,41 @@
+# Project Overview: AI-Powered Clinic Assistant
+
+This project is a sophisticated, voice-driven AI assistant designed to manage patient interactions for a clinic. It uses a combination of speech-to-text, natural language processing with OpenAI's GPT-4o, and a robust database system to handle tasks like appointment scheduling, patient registration, and insurance verification through a natural, conversational interface.
+
+---
+
+## How It Works: The Core Loop
+
+The application operates in a continuous loop driven by the `main.py` script:
+
+1.  **Greeting**: The assistant starts the conversation with a spoken greeting.
+2.  **Listen**: It records audio from the user's microphone, automatically detecting when they start and stop speaking.
+3.  **Transcribe**: The recorded audio is sent to OpenAI's Whisper model to be converted into text.
+4.  **Understand**: This text is then sent to the GPT-4o model, which is equipped with a set of "tools" (the database functions). The AI determines the user's intent (e.g., they want to book an appointment).
+5.  **Act**: If the AI decides an action is needed, it calls the appropriate function from `database.py` (e.g., `book_appointment` with the extracted details).
+6.  **Respond**: The AI formulates a natural language response based on the result of the action (e.g., "Your appointment is confirmed.") and converts it to speech.
+7.  **Speak**: The generated audio is played back to the user.
+
+---
+
+## Key Components (Python Files)
+
+*   **`main.py`**: The central orchestrator. It manages the conversation flow, integrates the OpenAI services (Whisper for speech-to-text, GPT-4o for intelligence, and TTS for speech generation), and connects the AI's decisions to the database actions. It is the single entry point to run the entire application.
+
+*   **`database.py`**: The data and logic hub. This file handles all interactions with the `clinic_data.db` SQLite database. It contains all the core business logic, such as validating appointment times, checking for scheduling conflicts, handling patient data, and using fuzzy string matching to find patient or insurance names even with minor typos.
+
+*   **`email_notifications.py`**: A dedicated service for sending automated emails. When an appointment is successfully booked or changed, this module is called to send a professional, templated HTML confirmation email to the patient via the SendGrid API.
+
+*   **`check_env.py`**: A diagnostic utility. This script is used to verify that the environment variables (like API keys) are correctly loaded from the `.env` file. It's a tool for setup and debugging, not part of the main application logic.
+
+---
+
+## Setup and Usage
+
+You only need to run the main file to start the application. The database will be initialized automatically.
+
+1.  **Ensure your `.env` file is configured** with your `OPENAI_API_KEY` and `SENDGRID_API_KEY`. You can run `python check_env.py` to verify this.
+2.  **Activate your virtual environment**: `source venv/bin/activate`
+3.  **Run the application**: `python main.py`
+
+The assistant will greet you, and you can begin speaking. 
