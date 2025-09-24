@@ -38,11 +38,7 @@ The agent operates in a continuous loop, orchestrating a conversation that is en
 
 ## Setup
 
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository_url>
-    cd <repository_directory>
-    ```
+1.  **Clone the repository
 
 2.  **Create and activate a virtual environment:**
     ```bash
@@ -55,12 +51,16 @@ The agent operates in a continuous loop, orchestrating a conversation that is en
     pip install -r requirements.txt
     ```
 
-4.  **Set up your OpenAI API key:**
+4.  **Set up your OpenAI API and Sendgrid API key:**
     - Create a file named `.env` in the project directory.
-    - Add your OpenAI API key to this file:
+    - Add your OpenAI API and Sendgrid API key to this file:
       ```
       OPENAI_API_KEY='your_api_key_here'
       ```
+       ```
+      SENDGRID_API_KEY='your_api_key_here'
+      ```
+      
 
 ## Usage
 
@@ -77,3 +77,21 @@ The agent operates in a continuous loop, orchestrating a conversation that is en
     ```
 
 This will allow you to see the patients and appointments being created in real-time. 
+
+
+## Test Scripts  
+
+To make development and debugging easier, we’ve added a set of lightweight test scripts. Each one focuses on a specific component of the system, so issues can be identified and fixed before running full end-to-end tests.  
+
+### Available Scripts  
+- **`test_api_key.py`** – Verifies that the `OPENAI_API_KEY` is valid and the application can connect to OpenAI services.  
+- **`test_sendgrid.py`** – Sends a sample email with a SendGrid template to confirm the `SENDGRID_API_KEY` is valid and the sender identity is verified.  
+- **`test_database_flow.py`** – Interactively checks core database functions by adding a patient and booking an appointment, ensuring data is stored correctly.  
+- **`test_agent_chat.py`** – Simulates the AI agent in your command line to test conversational flow and task execution (e.g., booking, canceling, or rescheduling appointments).  
+
+### Why We Set This Up  
+These scripts act as quick checkpoints to:  
+- Validate environment setup and API keys  
+- Confirm that critical services (email, database, AI agent) are working in isolation  
+- Simplify debugging by narrowing down issues early  
+- Increase confidence before running full system tests  
