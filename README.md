@@ -1,6 +1,6 @@
-# AI Clinical Voice Agent: "Jay"
+# AI Front Office Voice Agent: "Jay"
 
-This project implements a sophisticated, voice-driven AI clinical assistant named "Jay" for the fictional "Stemmee Surgery Center." The agent is designed to handle initial patient interactions, such as conducting patient intake, answering questions about the clinic, and managing appointments. It uses a combination of OpenAI's powerful voice and language models, a persistent SQLite database, and a set of predefined tools to perform its tasks in a conversational and efficient manner.
+This project implements a sophisticated, voice-driven AI clinic assistant named "Jay" for the fictional "Stemmee Surgery Center." The agent is designed to handle initial patient interactions, such as conducting patient intake, answering questions about the clinic, and managing appointments. It uses a combination of OpenAI's powerful voice and language models, a persistent SQLite database, and a set of predefined tools to perform its tasks in a conversational and efficient manner.
 
 ## Core Features
 
